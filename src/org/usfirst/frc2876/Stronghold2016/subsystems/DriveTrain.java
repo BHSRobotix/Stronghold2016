@@ -11,11 +11,13 @@
 
 package org.usfirst.frc2876.Stronghold2016.subsystems;
 
+
 import org.usfirst.frc2876.Stronghold2016.RobotMap;
 import org.usfirst.frc2876.Stronghold2016.commands.*;
 import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Encoder.IndexingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
