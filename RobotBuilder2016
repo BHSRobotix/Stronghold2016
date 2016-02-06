@@ -164,7 +164,7 @@ Children:
           validators: *id002
           value: '8'
       Base: CAN Talon
-      Name: CAN Talon 1
+      Name: CANTalon
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
@@ -176,7 +176,7 @@ Children:
           validators: &id012 [DigitalChannel]
           value: '0'
       Base: Limit Switch
-      Name: Limit Switch 1
+      Name: BottomLimit
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
@@ -186,7 +186,7 @@ Children:
           validators: *id012
           value: '1'
       Base: Limit Switch
-      Name: Limit Switch 2
+      Name: TopLimit
     Properties:
       Default command parameters: !!robotbuilder.data.properties.ParametersProperty
         default: []

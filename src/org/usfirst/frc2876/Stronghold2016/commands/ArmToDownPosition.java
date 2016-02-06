@@ -42,6 +42,7 @@ public class ArmToDownPosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(!Robot.arm.getBottomLimit()) Robot.arm.moveArmDown(.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

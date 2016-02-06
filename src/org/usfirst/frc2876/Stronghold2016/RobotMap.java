@@ -38,9 +38,9 @@ public class RobotMap {
     public static AnalogGyro driveTrainAnalogGyro1;
     public static Encoder driveTrainIndexedEncoder1;
     public static Encoder driveTrainIndexedEncoder2;
-    public static CANTalon armCANTalon1;
-    public static DigitalInput armLimitSwitch1;
-    public static DigitalInput armLimitSwitch2;
+    public static CANTalon armCANTalon;
+    public static DigitalInput armBottomLimit;
+    public static DigitalInput armTopLimit;
     public static CANTalon intakeCANTalon1;
     public static CANTalon intakeCANTalon2;
     public static DigitalInput intakeLimitSwitch1;
@@ -78,14 +78,14 @@ public class RobotMap {
         driveTrainIndexedEncoder2.setDistancePerPulse(1.0);
         driveTrainIndexedEncoder2.setPIDSourceType(PIDSourceType.kRate);
         driveTrainIndexedEncoder2.setIndexSource(8, IndexingType.kResetOnRisingEdge);
-        armCANTalon1 = new CANTalon(8);
-        LiveWindow.addActuator("Arm", "CAN Talon 1", armCANTalon1);
+        armCANTalon = new CANTalon(8);
+        LiveWindow.addActuator("Arm", "CANTalon", armCANTalon);
         
-        armLimitSwitch1 = new DigitalInput(0);
-        LiveWindow.addSensor("Arm", "Limit Switch 1", armLimitSwitch1);
+        armBottomLimit = new DigitalInput(0);
+        LiveWindow.addSensor("Arm", "BottomLimit", armBottomLimit);
         
-        armLimitSwitch2 = new DigitalInput(1);
-        LiveWindow.addSensor("Arm", "Limit Switch 2", armLimitSwitch2);
+        armTopLimit = new DigitalInput(1);
+        LiveWindow.addSensor("Arm", "TopLimit", armTopLimit);
         
         intakeCANTalon1 = new CANTalon(6);
         LiveWindow.addActuator("Intake", "CAN Talon 1", intakeCANTalon1);
