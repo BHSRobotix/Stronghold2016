@@ -116,18 +116,29 @@ public class OI {
     public double getLeftX() { 
 		return controller.getRawAxis(LEFT_X_AXIS);
 	}
+    
 	public double getLeftY() { 
 		return controller.getRawAxis(LEFT_Y_AXIS);
 	}
+	
+	
 	public double getRightX() { 
 		return controller.getRawAxis(RIGHT_X_AXIS);
 	}
+	
+	public double getRightY() { 
+		return controller.getRawAxis(RIGHT_Y_AXIS);
+	}
+	
+	
 	public double getLeftTrigger() {
 		return controller.getRawAxis(LEFT_TRIGGER);
 	}
+	
 	public double getRightTrigger() {
 		return controller.getRawAxis(RIGHT_TRIGGER);
 	}
+	
 
 	public static final int LEFT_X_AXIS = 0,
 			LEFT_Y_AXIS = 1,
@@ -135,6 +146,7 @@ public class OI {
 			RIGHT_TRIGGER = 3,
 			RIGHT_X_AXIS = 4,
 			RIGHT_Y_AXIS = 5,
-			DPAD_LR = 6;
+			DPAD_X_AXIS = 6,
+			DPAD_Y_AXIS = 7;
 }
 
