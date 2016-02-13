@@ -56,11 +56,11 @@ public class DriveControl extends Command {
     	if(Robot.driveTrain.getIsTankDrive()) {
     		double rightY = (rampConstant * Math.pow(Robot.oi.getRightY(), 3) + 
     				(1 - rampConstant) * Robot.oi.getRightY()) * sensitivity;
-    		Robot.driveTrain.myRobot.tankDrive(leftY, rightY, true);
+    		Robot.driveTrain.myRobot.tankDrive(-leftY, -rightY, true);
     	} else {
     		double rightX = (rampConstant * Math.pow(Robot.oi.getRightX(), 3) + 
     				(1 - rampConstant)* Robot.oi.getRightX()) * sensitivity;
-    		Robot.driveTrain.myRobot.arcadeDrive(leftY, rightX, true);
+    		Robot.driveTrain.myRobot.arcadeDrive(-leftY, -rightX, true);
     	}
     }
 

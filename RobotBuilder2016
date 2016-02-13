@@ -12,9 +12,19 @@ Children:
           default: '2'
           name: CAN ID
           validators: &id002 [CANID]
-          value: '0'
+          value: '4'
       Base: CAN Talon
       Name: FrontRightTalon
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '2'
+          name: CAN ID
+          validators: *id002
+          value: '3'
+      Base: CAN Talon
+      Name: RearRightTalon
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -33,16 +43,6 @@ Children:
           name: CAN ID
           validators: *id002
           value: '2'
-      Base: CAN Talon
-      Name: RearRightTalon
-    - Children: []
-      Properties:
-        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '2'
-          name: CAN ID
-          validators: *id002
-          value: '3'
       Base: CAN Talon
       Name: RearLeftTalon
     - Children: []
@@ -162,7 +162,7 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '8'
+          value: '9'
       Base: CAN Talon
       Name: CANTalon
     - Children: []
@@ -210,9 +210,9 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '6'
+          value: '7'
       Base: CAN Talon
-      Name: CAN Talon 1
+      Name: LeftTalon
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -220,9 +220,9 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '7'
+          value: '8'
       Base: CAN Talon
-      Name: CAN Talon 2
+      Name: RightTalon
     - Children: []
       Properties:
         Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
@@ -256,9 +256,9 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '4'
+          value: '5'
       Base: CAN Talon
-      Name: CAN Talon 1
+      Name: LeftTalon
     - Children: []
       Properties:
         CAN ID: !!robotbuilder.data.properties.ChoicesProperty
@@ -266,9 +266,9 @@ Children:
           default: '2'
           name: CAN ID
           validators: *id002
-          value: '5'
+          value: '6'
       Base: CAN Talon
-      Name: CAN Talon 2
+      Name: RightTalon
     - Children: []
       Properties:
         Channel A Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty

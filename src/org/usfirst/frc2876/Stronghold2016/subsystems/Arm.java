@@ -47,11 +47,11 @@ public class Arm extends Subsystem {
     }
     
     public void moveArmUp(double speed){
-    	cANTalon.set(speed);
+    	cANTalon.set(-speed);
     }
     
     public void moveArmDown(double speed){
-    	cANTalon.set(-speed);
+    	cANTalon.set(speed);
     }
 
     public void initDefaultCommand() {
