@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder.IndexingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 
@@ -36,8 +35,8 @@ public class RobotMap {
     public static CANTalon driveTrainFrontLeftTalon;
     public static CANTalon driveTrainRearLeftTalon;
     public static AnalogGyro driveTrainAnalogGyro1;
-    public static Encoder driveTrainIndexedEncoder1;
-    public static Encoder driveTrainIndexedEncoder2;
+    public static Encoder driveTrainLeftEncoder;
+    public static Encoder driveTrainRightEncoder;
     public static CANTalon armCANTalon;
     public static DigitalInput armBottomLimit;
     public static DigitalInput armTopLimit;
@@ -68,23 +67,21 @@ public class RobotMap {
         driveTrainAnalogGyro1 = new AnalogGyro(0);
         LiveWindow.addSensor("DriveTrain", "AnalogGyro 1", driveTrainAnalogGyro1);
         driveTrainAnalogGyro1.setSensitivity(0.007);
-        driveTrainIndexedEncoder1 = new Encoder(3, 4, false);
-        LiveWindow.addSensor("DriveTrain", "Indexed Encoder 1", driveTrainIndexedEncoder1);
-        driveTrainIndexedEncoder1.setDistancePerPulse(1.0);
-        driveTrainIndexedEncoder1.setPIDSourceType(PIDSourceType.kRate);
-        driveTrainIndexedEncoder1.setIndexSource(5, IndexingType.kResetOnRisingEdge);
-        driveTrainIndexedEncoder2 = new Encoder(6, 7, false);
-        LiveWindow.addSensor("DriveTrain", "Indexed Encoder 2", driveTrainIndexedEncoder2);
-        driveTrainIndexedEncoder2.setDistancePerPulse(1.0);
-        driveTrainIndexedEncoder2.setPIDSourceType(PIDSourceType.kRate);
-        driveTrainIndexedEncoder2.setIndexSource(8, IndexingType.kResetOnRisingEdge);
+        driveTrainLeftEncoder = new Encoder(9, 8, false, EncodingType.k4X);
+        LiveWindow.addSensor("DriveTrain", "LeftEncoder", driveTrainLeftEncoder);
+        driveTrainLeftEncoder.setDistancePerPulse(0.01);
+        driveTrainLeftEncoder.setPIDSourceType(PIDSourceType.kRate);
+        driveTrainRightEncoder = new Encoder(7, 6, false, EncodingType.k4X);
+        LiveWindow.addSensor("DriveTrain", "RightEncoder", driveTrainRightEncoder);
+        driveTrainRightEncoder.setDistancePerPulse(0.01);
+        driveTrainRightEncoder.setPIDSourceType(PIDSourceType.kRate);
         armCANTalon = new CANTalon(9);
         LiveWindow.addActuator("Arm", "CANTalon", armCANTalon);
         
-        armBottomLimit = new DigitalInput(0);
+        armBottomLimit = new DigitalInput(24);
         LiveWindow.addSensor("Arm", "BottomLimit", armBottomLimit);
         
-        armTopLimit = new DigitalInput(1);
+        armTopLimit = new DigitalInput(25);
         LiveWindow.addSensor("Arm", "TopLimit", armTopLimit);
         
         intakeLeftTalon = new CANTalon(7);
@@ -93,7 +90,7 @@ public class RobotMap {
         intakeRightTalon = new CANTalon(8);
         LiveWindow.addActuator("Intake", "RightTalon", intakeRightTalon);
         
-        intakeLimitSwitch1 = new DigitalInput(2);
+        intakeLimitSwitch1 = new DigitalInput(23);
         LiveWindow.addSensor("Intake", "Limit Switch 1", intakeLimitSwitch1);
         
         shooterLeftTalon = new CANTalon(5);
@@ -102,7 +99,7 @@ public class RobotMap {
         shooterRightTalon = new CANTalon(6);
         LiveWindow.addActuator("Shooter", "RightTalon", shooterRightTalon);
         
-        shooterQuadratureEncoder1 = new Encoder(9, 10, false, EncodingType.k4X);
+        shooterQuadratureEncoder1 = new Encoder(15, 10, false, EncodingType.k4X);
         LiveWindow.addSensor("Shooter", "Quadrature Encoder 1", shooterQuadratureEncoder1);
         shooterQuadratureEncoder1.setDistancePerPulse(1.0);
         shooterQuadratureEncoder1.setPIDSourceType(PIDSourceType.kRate);

@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2876.Stronghold2016.commands;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2876.Stronghold2016.Robot;
 
@@ -38,10 +39,13 @@ public class ShooterControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.shooter.getLeftTalon().changeControlMode(CANTalon.TalonControlMode.Follower);
+    	Robot.shooter.getLeftTalon().set(Robot.shooter.getRightTalon().getDeviceID());
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

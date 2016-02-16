@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2876.Stronghold2016.commands;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2876.Stronghold2016.Robot;
 
@@ -38,6 +39,8 @@ public class IntakeControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.intake.getLeftTalon().changeControlMode(CANTalon.TalonControlMode.Follower);
+    	Robot.intake.getLeftTalon().set(Robot.intake.getRightTalon().getDeviceID());
     }
 
     // Called repeatedly when this Command is scheduled to run
