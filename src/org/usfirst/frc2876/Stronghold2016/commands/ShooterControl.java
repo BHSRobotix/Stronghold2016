@@ -41,6 +41,7 @@ public class ShooterControl extends Command {
     protected void initialize() {
     	Robot.shooter.getLeftTalon().changeControlMode(CANTalon.TalonControlMode.Follower);
     	Robot.shooter.getLeftTalon().set(Robot.shooter.getRightTalon().getDeviceID());
+    	Robot.shooter.getLeftTalon().reverseOutput(true);
     }
 
     // Called repeatedly when this Command is scheduled to run

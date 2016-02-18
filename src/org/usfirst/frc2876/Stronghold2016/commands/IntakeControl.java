@@ -39,8 +39,6 @@ public class IntakeControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.getLeftTalon().changeControlMode(CANTalon.TalonControlMode.Follower);
-    	Robot.intake.getLeftTalon().set(Robot.intake.getRightTalon().getDeviceID());
     }
 
     // Called repeatedly when this Command is scheduled to run

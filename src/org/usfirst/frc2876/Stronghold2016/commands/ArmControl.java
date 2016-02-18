@@ -47,11 +47,8 @@ public class ArmControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	Robot.oi.leftBumper.whileHeld(down);
-//    	Robot.oi.rightBumper.whileHeld(up);
-    	
-    	if(Robot.oi.leftBumper.get()) Robot.arm.moveArmUp(1);
-    	else if (Robot.oi.rightBumper.get()) Robot.arm.moveArmDown(1);
+    	if(Robot.oi.leftBumper.get()) Robot.arm.moveArmUp(.5);
+    	else if (Robot.oi.rightBumper.get()) Robot.arm.moveArmDown(.5);
     	else Robot.arm.moveArmUp(0);
     }
 
