@@ -114,10 +114,10 @@ public class DriveTrain extends Subsystem {
 	public void updateSmartDashboard(){
 //		boolean sensorPluggedIn = (frontRightTalon.isSensorPresent(FeedbackDevice.QuadEncoder) == FeedbackDeviceStatus.FeedbackStatusPresent);
 //		SmartDashboard.putBoolean("frencoder isSensorPresent ", sensorPluggedIn);
-		SmartDashboard.putData("Left Encoder Distance", getLeftEncoder());
-    	SmartDashboard.putData("Right Encoder Distance", getRightEncoder());
-    	SmartDashboard.putNumber("srx encoder r", frontRightTalon.getEncPosition());
-    	SmartDashboard.putNumber("srx encoder l", frontLeftTalon.getEncPosition());
+		SmartDashboard.putData("Left Encoder", getLeftEncoder());
+    	SmartDashboard.putData("Right Encoder", getRightEncoder());
+    	SmartDashboard.putNumber("Right Encoder d", rightEncoder.getDistance());
+    	SmartDashboard.putNumber("Left Encoder d", leftEncoder.getDistance());
     	SmartDashboard.putNumber("X Accel NavX", Robot.navX.getRawAccelX());
     	SmartDashboard.putNumber("Y Accel NavX", Robot.navX.getRawAccelY());
     	SmartDashboard.putNumber("X Gyro NavX", Robot.navX.getRawGyroX());
@@ -129,11 +129,11 @@ public class DriveTrain extends Subsystem {
 		rightEncoder.reset();
 	}
 	public void initializeDistancePerPulse() {
-//		double wheelDiameter = 8;
-//		double pulsePerRevolution = 2048;
-//		double gearRatio = 10.71;
-//		rightEncoder.setDistancePerPulse(Math.PI * wheelDiameter / pulsePerRevolution / gearRatio);
-//		leftEncoder.setDistancePerPulse(Math.PI * wheelDiameter / pulsePerRevolution / gearRatio);
+		double wheelDiameter = 8;
+		double pulsePerRevolution = 2048;
+		double gearRatio = 10.71;
+		rightEncoder.setDistancePerPulse(Math.PI * wheelDiameter / pulsePerRevolution * gearRatio);
+		leftEncoder.setDistancePerPulse(Math.PI * wheelDiameter / pulsePerRevolution * gearRatio);
 	}
 }
 
