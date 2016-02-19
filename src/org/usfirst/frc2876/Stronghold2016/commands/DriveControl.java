@@ -48,7 +48,6 @@ public class DriveControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
     	Robot.oi.backButton.whenPressed(new DriveInTankMode());
     	Robot.oi.startButton.whenPressed(new DriveInArcadeMode());
     	if ((Robot.oi.controller.getPOV() <= 45 && Robot.oi.controller.getPOV() >= 0) ||

@@ -25,6 +25,8 @@ import edu.wpi.first.wpilibj.CANTalon.TalonControlMode;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Encoder.IndexingType;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -53,6 +55,13 @@ public class DriveTrain extends Subsystem {
     
 //	public RobotDrive myRobot = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
+    public PIDController turnController;
+    public double kP = .3;
+    public double kI = 0;
+    public double kD = 0;
+    public double kF = 0;
+    public double pidTolerance = 2.0;
+    
     
     public RobotDrive myRobot = new RobotDrive(frontLeftTalon, frontRightTalon);
 	
@@ -81,6 +90,11 @@ public class DriveTrain extends Subsystem {
 		this.sensitivity = sensitivity;
 	}
 	
+	public double getDistance(){
+		return (leftEncoder.getDistance() + rightEncoder.getDistance()) / 2;
+	  
+	}
+	
 	
 	public Encoder getLeftEncoder() {
 		return leftEncoder;
@@ -90,8 +104,19 @@ public class DriveTrain extends Subsystem {
 	public Encoder getRightEncoder() {
 		return rightEncoder;
 	}
-
+	
 	public void initDefaultCommand() {
+		
+        turnController = new PIDController(kP, kI, kD, kF, Robot.navX, 
+        	new PIDOutput(){ 
+				public void pidWrite(double output) {
+				}
+			}
+				);
+        turnController.setInputRange(-180.0f,  180.0f);
+        turnController.setOutputRange(-.5, .5);
+        turnController.setAbsoluteTolerance(pidTolerance);
+        turnController.setContinuous(true);
 		
 		rearLeftTalon.changeControlMode(TalonControlMode.Follower);
 		rearLeftTalon.set(frontLeftTalon.getDeviceID());
@@ -113,15 +138,26 @@ public class DriveTrain extends Subsystem {
     }
 	public void updateSmartDashboard(){
 //		boolean sensorPluggedIn = (frontRightTalon.isSensorPresent(FeedbackDevice.QuadEncoder) == FeedbackDeviceStatus.FeedbackStatusPresent);
-//		SmartDashboard.putBoolean("frencoder isSensorPresent ", sensorPluggedIn);
+//		SmartDashboard.putBoolean("fr encoder isSensorPresent ", sensorPluggedIn);
 		SmartDashboard.putData("Left Encoder", getLeftEncoder());
     	SmartDashboard.putData("Right Encoder", getRightEncoder());
     	SmartDashboard.putNumber("Right Encoder d", rightEncoder.getDistance());
     	SmartDashboard.putNumber("Left Encoder d", leftEncoder.getDistance());
-    	SmartDashboard.putNumber("X Accel NavX", Robot.navX.getRawAccelX());
-    	SmartDashboard.putNumber("Y Accel NavX", Robot.navX.getRawAccelY());
-    	SmartDashboard.putNumber("X Gyro NavX", Robot.navX.getRawGyroX());
+//    	SmartDashboard.putBoolean("is navX connected", Robot.navX.isConnected());
+//    	SmartDashboard.putBoolean("is navX calibrating", Robot.navX.isCalibrating());
+    	SmartDashboard.putData("NavX", Robot.navX);
+    	SmartDashboard.putBoolean("is navX moving", Robot.navX.isMoving());
+    	SmartDashboard.putBoolean("is navX rotating", Robot.navX.isRotating());
+    	SmartDashboard.putNumber("navX angle", Robot.navX.getAngle());
+    	SmartDashboard.putNumber("navX pitch", Robot.navX.getPitch());
+    	SmartDashboard.putNumber("navX yaw", Robot.navX.getYaw());
+    	SmartDashboard.putNumber("navX roll", Robot.navX.getRoll());
+    	SmartDashboard.putNumber("navX WorldX", Robot.navX.getWorldLinearAccelX());
+    	SmartDashboard.putNumber("navX WorldY", Robot.navX.getWorldLinearAccelY());
+    	SmartDashboard.putNumber("navX WorldZ", Robot.navX.getWorldLinearAccelZ());
     	SmartDashboard.putNumber("Accel RoboRio", accel.getAcceleration());
+    	SmartDashboard.putData("pid", turnController);
+    	SmartDashboard.putNumber("pid output", turnController.get());
 
 	}
 	public void resetEncoders() {
