@@ -38,6 +38,8 @@ public class RobotMap {
     public static Encoder driveTrainLeftEncoder;
     public static AnalogAccelerometer driveTrainAccel;
     public static CANTalon armCANTalon;
+    public static Encoder armEncoder;
+    public static CANTalon armTestMotor;
     public static CANTalon intakeRightTalon;
     public static CANTalon intakeLeftTalon;
     public static DigitalInput intakeLimitSwitch;
@@ -72,6 +74,13 @@ public class RobotMap {
         driveTrainAccel.setZero(2.5);
         armCANTalon = new CANTalon(9);
         LiveWindow.addActuator("Arm", "CANTalon", armCANTalon);
+        
+        armEncoder = new Encoder(4, 3, false, EncodingType.k4X);
+        LiveWindow.addSensor("Arm", "Encoder", armEncoder);
+        armEncoder.setDistancePerPulse(1.0);
+        armEncoder.setPIDSourceType(PIDSourceType.kRate);
+        armTestMotor = new CANTalon(6);
+        LiveWindow.addActuator("Arm", "TestMotor", armTestMotor);
         
         intakeRightTalon = new CANTalon(7);
         LiveWindow.addActuator("Intake", "RightTalon", intakeRightTalon);

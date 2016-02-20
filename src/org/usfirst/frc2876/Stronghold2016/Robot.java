@@ -86,7 +86,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    	autonomousCommand = new AutoDriveDistance(120);
+    	autonomousCommand = new DriveCrossDefense(0, -.8);
         if (autonomousCommand != null) autonomousCommand.start();
 //        navX.reset();
 //        driveTrain.turnController.setSetpoint(90);
@@ -97,6 +97,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
+    	arm.updateSmartDashboard();
     	driveTrain.updateSmartDashboard();
         Scheduler.getInstance().run();
     }
@@ -117,6 +118,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	arm.updateSmartDashboard();
     	driveTrain.updateSmartDashboard();
     	intake.updateSmartDashboard();
         Scheduler.getInstance().run();

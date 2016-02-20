@@ -130,6 +130,21 @@ public class DriveTrain extends Subsystem {
 		return leftEncoder;
 	}
 	
+	private boolean isCrossing = false;
+	
+	public boolean isCrossingDefense(){
+		double roll = Math.abs(Robot.navX.getRoll());
+		double thresholdOffBalance = 8;
+		double thresholdOnBalance = 5;
+		
+		if(!isCrossing && roll > thresholdOffBalance) {
+			isCrossing = true;
+		} else if (isCrossing && roll < thresholdOnBalance) {
+			isCrossing = false;
+		} 
+		return isCrossing;
+	}
+	
 	public void initDefaultCommand() {
 		
 		
@@ -164,6 +179,7 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("Accel RoboRio", accel.getAcceleration());
     	SmartDashboard.putData("pid", turnController);
     	SmartDashboard.putNumber("pid output", turnController.get());
+    	SmartDashboard.putBoolean("is crossing", isCrossing);
 
 	}
 	public void resetEncoders() {
