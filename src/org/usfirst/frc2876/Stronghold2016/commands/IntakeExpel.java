@@ -39,7 +39,7 @@ public class IntakeExpel extends Command {
     
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.spinMotorsOut(1);
+    	Robot.intake.spinMotorsOut(Robot.intake.outputSpeed);
     }
 
     // Called repeatedly when this Command is scheduled to run

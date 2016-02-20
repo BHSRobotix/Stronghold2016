@@ -51,11 +51,12 @@ public class AutoDriveReach extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double d = Robot.driveTrain.getDistance();
-    	if (d > 240){
-    		return true;
-    	}    
-    	return false;
+//    	double d = Robot.driveTrain.getDistance();
+//    	if (d > 240){
+//    		return true;
+//    	}    
+//    	return false;
+    	return (Robot.driveTrain.getDistance() > 240);
     }
 
     // Called once after isFinished returns true

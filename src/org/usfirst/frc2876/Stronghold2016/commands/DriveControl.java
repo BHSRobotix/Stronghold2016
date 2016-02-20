@@ -50,19 +50,40 @@ public class DriveControl extends Command {
     protected void execute() {
     	Robot.oi.backButton.whenPressed(new DriveInTankMode());
     	Robot.oi.startButton.whenPressed(new DriveInArcadeMode());
+    	
     	if ((Robot.oi.controller.getPOV() <= 45 && Robot.oi.controller.getPOV() >= 0) ||
     			Robot.oi.controller.getPOV() >= 315) sensitivity = 1;
-    	if (Robot.oi.controller.getPOV() <= 225 && Robot.oi.controller.getPOV() >= 135) sensitivity = .65;
+    	if (Robot.oi.controller.getPOV() <= 225 &&
+    			Robot.oi.controller.getPOV() >= 135) sensitivity = .65;
+    	
     	double leftY = (rampConstant * Math.pow(Robot.oi.getLeftY(), 3) + 
     			(1 - rampConstant) * Robot.oi.getLeftY()) * sensitivity;
+    	
     	if(Robot.driveTrain.getIsTankDrive()) {
     		double rightY = (rampConstant * Math.pow(Robot.oi.getRightY(), 3) + 
     				(1 - rampConstant) * Robot.oi.getRightY()) * sensitivity;
+    		
+//    		Robot.driveTrain.turnController.disable();
+//    		Robot.driveTrain.turnController.setSetpoint(Robot.navX.getYaw());
+    		
     		Robot.driveTrain.myRobot.tankDrive(-leftY, -rightY, true);
+    	
     	} else {
+    		
     		double rightX = (rampConstant * Math.pow(Robot.oi.getRightX(), 3) + 
     				(1 - rampConstant)* Robot.oi.getRightX()) * sensitivity;
-    		Robot.driveTrain.myRobot.arcadeDrive(-leftY, -rightX, true);
+    		
+//    		if(Robot.oi.getRightX() < .1 && Robot.oi.getRightX() > -.1){
+//    			Robot.driveTrain.turnController.setPID(leftY * .6,
+//    					Robot.driveTrain.kI, Robot.driveTrain.kD);
+//    			Robot.driveTrain.turnController.enable();
+    			
+//    			Robot.driveTrain.myRobot.arcadeDrive(leftY, 
+//    					Robot.driveTrain.turnController.get(), true);
+//    		} else {
+//    			Robot.driveTrain.turnController.disable();
+    			Robot.driveTrain.myRobot.arcadeDrive(-leftY, -rightX, true);
+//    		}
     	}
     }
 

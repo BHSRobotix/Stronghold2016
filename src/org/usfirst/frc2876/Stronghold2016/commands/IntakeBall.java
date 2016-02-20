@@ -38,8 +38,8 @@ public class IntakeBall extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.getRightTalon().enableLimitSwitch(true, false);
-    	Robot.intake.spinMotorsIn(.5);
+//    	Robot.intake.getLeftTalon().enableLimitSwitch(true, false);
+    	Robot.intake.spinMotorsIn(Robot.intake.intakeSpeed);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,15 +48,17 @@ public class IntakeBall extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Robot.intake.isLimitSwitchPressed();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intake.setBothMotors(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
