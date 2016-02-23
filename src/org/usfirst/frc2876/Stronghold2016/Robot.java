@@ -85,8 +85,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
+    	driveTrain.setBrakeMode(true);
         // schedule the autonomous command (example)
-    	autonomousCommand = new DriveCrossDefense(0, -.8);
+    	autonomousCommand = new AutoCGCrossRoughTerrain();
         if (autonomousCommand != null) autonomousCommand.start();
 //        navX.reset();
 //        driveTrain.turnController.setSetpoint(90);
@@ -109,8 +110,12 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
 //    	driveTrain.turnController.disable();
 //    	navX.zeroYaw();
+    	driveTrain.setBrakeMode(false);
+    	//driveTrain.setRampRate(40);
         if (autonomousCommand != null) autonomousCommand.cancel();
         driveTrain.resetEncoders();
+        Command pollXBox = new PollXBox();
+        pollXBox.start();
        // driveTrain.initializeDistancePerPulse();
     }
 

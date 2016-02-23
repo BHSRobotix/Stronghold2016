@@ -46,7 +46,7 @@ public class AutoCGScore extends CommandGroup {
     	
     	addSequential(new ArmToTop());
     	addSequential(new IntakeExpel());
-    	addSequential(new AutoDriveDistance(42, .7));
+    	addSequential(new AutoDriveDistance(50, .7)); //ramp is 42 inches
  
     } 
 }

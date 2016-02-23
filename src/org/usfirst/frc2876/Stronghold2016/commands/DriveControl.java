@@ -51,10 +51,8 @@ public class DriveControl extends Command {
     	Robot.oi.backButton.whenPressed(new DriveInTankMode());
     	Robot.oi.startButton.whenPressed(new DriveInArcadeMode());
     	
-    	if ((Robot.oi.controller.getPOV() <= 45 && Robot.oi.controller.getPOV() >= 0) ||
-    			Robot.oi.controller.getPOV() >= 315) sensitivity = 1;
-    	if (Robot.oi.controller.getPOV() <= 225 &&
-    			Robot.oi.controller.getPOV() >= 135) sensitivity = .65;
+    	if (Robot.oi.controller.getPOV() == 0) sensitivity = 1;
+    	if (Robot.oi.controller.getPOV() == 180) sensitivity = .65;
     	
     	double leftY = (rampConstant * Math.pow(Robot.oi.getLeftY(), 3) + 
     			(1 - rampConstant) * Robot.oi.getLeftY()) * sensitivity;

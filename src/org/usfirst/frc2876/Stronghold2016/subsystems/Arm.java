@@ -41,7 +41,7 @@ public class Arm extends Subsystem {
     // here. Call these from Commands.
     
     public Arm(){
-    	testMotor.changeControlMode(CANTalon.TalonControlMode.Position);
+//    	testMotor.changeControlMode(CANTalon.TalonControlMode.Position);
     }
     
     public void moveArmUp(double speed){
@@ -57,8 +57,8 @@ public class Arm extends Subsystem {
     }
     
     public void updateSmartDashboard(){
-//    	SmartDashboard.putData("Arm Encoder", ecnoder);
-    	SmartDashboard.putNumber("Arm Motor", testMotor.get());
+    	SmartDashboard.putData("Arm Encoder", encoder);
+//    	SmartDashboard.putNumber("Arm Motor", testMotor.get());
     }
     
     public void initDefaultCommand() {
