@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	driveTrain.setBrakeMode(true);
         // schedule the autonomous command (example)
-    	autonomousCommand = new AutoCGCrossRoughTerrain();
+    	autonomousCommand = new AutoCGCrossLowBar();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -105,7 +105,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-
+    	driveTrain.initializeCamera();
     	driveTrain.setBrakeMode(false);
         if (autonomousCommand != null) autonomousCommand.cancel();
         driveTrain.resetEncoders();

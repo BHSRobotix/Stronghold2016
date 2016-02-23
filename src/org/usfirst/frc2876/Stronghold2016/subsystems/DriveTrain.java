@@ -196,7 +196,6 @@ public class DriveTrain extends Subsystem {
 //    	SmartDashboard.putData("pid", turnController);
 //    	SmartDashboard.putNumber("pid output", turnController.get());
 //    	SmartDashboard.putBoolean("is crossing", isCrossing);
-
 	}
 	public void resetEncoders() {
 		rightEncoder.reset();
