@@ -38,7 +38,6 @@ public class IntakeBallForce extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	Robot.intake.getLeftTalon().enableLimitSwitch(false, false);
     	Robot.intake.spinMotorsIn(Robot.intake.intakeSpeed);
     }
 

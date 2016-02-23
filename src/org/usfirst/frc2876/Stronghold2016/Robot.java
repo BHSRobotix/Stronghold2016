@@ -89,9 +89,6 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
     	autonomousCommand = new AutoCGCrossRoughTerrain();
         if (autonomousCommand != null) autonomousCommand.start();
-//        navX.reset();
-//        driveTrain.turnController.setSetpoint(90);
-//        driveTrain.turnController.enable();
     }
 
     /**
@@ -108,15 +105,12 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove
         // this line or comment it out.
-//    	driveTrain.turnController.disable();
-//    	navX.zeroYaw();
+
     	driveTrain.setBrakeMode(false);
-    	//driveTrain.setRampRate(40);
         if (autonomousCommand != null) autonomousCommand.cancel();
         driveTrain.resetEncoders();
         Command pollXBox = new PollXBox();
         pollXBox.start();
-       // driveTrain.initializeDistancePerPulse();
     }
 
     /**

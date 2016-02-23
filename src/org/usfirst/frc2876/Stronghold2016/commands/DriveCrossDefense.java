@@ -61,26 +61,13 @@ public class DriveCrossDefense extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-//    protected void execute() {
-//    	Robot.driveTrain.myRobot.arcadeDrive(m_speed, -Robot.driveTrain.turnController.get(), true);
-//    	if (!startCross){
-//    		startCross = Robot.driveTrain.isCrossingDefense();
-//    		if (startCross) time.start();
-//    	} else {
-//    		if(time.get() > 1) endCross = !Robot.driveTrain.isCrossingDefense();
-//    	}
-//    	SmartDashboard.putBoolean("start cross", startCross);
-//    	SmartDashboard.putBoolean("end cross", endCross);
-//    }
-    
     protected void execute() {
+    	//This logic is questionable and could be simplified, but it works. If it ain't broke...
     	Robot.driveTrain.myRobot.arcadeDrive(m_speed, -Robot.driveTrain.turnController.get(), true);
     	if (!startCross){
     		startCross = Robot.driveTrain.isCrossingDefense();
     	} else {
     		boolean end = !Robot.driveTrain.isCrossingDefense();
-    		SmartDashboard.putBoolean("end", end);
-        	
     		if (end && !timerStarted) {
     			time.start();
     			timerStarted = true;
@@ -96,15 +83,12 @@ public class DriveCrossDefense extends Command {
     	if (m_distance > 0 && m_distance < Math.abs(Robot.driveTrain.getDistance())) {
     		endCross = true;
     	}
-    	SmartDashboard.putBoolean("start cross", startCross);
-    	SmartDashboard.putBoolean("end cross", endCross);
-    	
-    	SmartDashboard.putNumber("time", time.get());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return endCross;// && time.get() > .5;
+        return endCross;
     }
 
     // Called once after isFinished returns true
