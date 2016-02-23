@@ -36,17 +36,20 @@ public class PollXBox extends Command {
     }
     
     Command cross;
+    
+    boolean lastRightDPad;
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	cross = new DriveCrossDefense(0, 0);
+    	lastRightDPad = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.oi.controller.getPOV() == 0) Robot.driveTrain.sensitivity = 1;
     	if (Robot.oi.controller.getPOV() == 180) Robot.driveTrain.sensitivity = .65;
-    	if (Robot.oi.controller.getPOV() == 90) {
+    	if (!lastRightDPad && Robot.oi.controller.getPOV() == 90) {
     		if(!cross.isRunning()){
     			cross = new DriveCrossDefense(140, -.8);
     			cross.start();
@@ -54,7 +57,7 @@ public class PollXBox extends Command {
     			cross.cancel();
     		}
     	}
-    	
+    	lastRightDPad = Robot.oi.controller.getPOV() == 90;
     	
     	
     }
