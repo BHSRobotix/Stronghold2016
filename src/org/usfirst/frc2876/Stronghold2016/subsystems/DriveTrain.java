@@ -118,7 +118,7 @@ public class DriveTrain extends Subsystem {
 		rearRightTalon.setVoltageRampRate(ramp);
 	}
 	
-	public double sensitivity = .65;
+	public double sensitivity = .75;
 
 	public double getSensitivity(){
 		return sensitivity;

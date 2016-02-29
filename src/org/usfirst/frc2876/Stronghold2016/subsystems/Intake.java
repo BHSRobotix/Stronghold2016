@@ -62,7 +62,7 @@ public class Intake extends Subsystem {
 //    	SmartDashboard.putNumber("Right Intake Talon Output", rightTalon.get());
 //    	SmartDashboard.putBoolean("is intake limit switch pressed", isLimitSwitchPressed());
 //    	SmartDashboard.putData("intake", this);
-    	SmartDashboard.putBoolean("Is Intake Running", rightTalon.get() > 0);
+    	SmartDashboard.putBoolean("Is Intake Running", Math.abs(rightTalon.get()) > 0);
     }
     
     public void spinMotorsOut(double output){

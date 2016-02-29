@@ -48,7 +48,7 @@ public class PollXBox extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.oi.controller.getPOV() == 0) Robot.driveTrain.sensitivity = 1;
-    	if (Robot.oi.controller.getPOV() == 180) Robot.driveTrain.sensitivity = .65;
+    	if (Robot.oi.controller.getPOV() == 180) Robot.driveTrain.sensitivity = .75;
     	if (!lastRightDPad && Robot.oi.controller.getPOV() == 90) {
     		if(!cross.isRunning()){
     			cross = new DriveCrossDefense(140, -.8);
