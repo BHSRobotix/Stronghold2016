@@ -47,6 +47,8 @@ public class Robot extends IterativeRobot {
     
     public static AHRS navX;
     
+    public static final boolean IS_PRACTICE_BOT = true;
+    
     SendableChooser autoChooser;
 
     /**

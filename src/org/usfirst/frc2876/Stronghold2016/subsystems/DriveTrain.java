@@ -70,6 +70,9 @@ public class DriveTrain extends Subsystem {
     public RobotDrive myRobot;
     
     public DriveTrain(){
+    	rearLeftTalon.setInverted(Robot.IS_PRACTICE_BOT);
+    	frontLeftTalon.setInverted(Robot.IS_PRACTICE_BOT);
+    	
     	myRobot = new RobotDrive(frontLeftTalon, rearLeftTalon, frontRightTalon, rearRightTalon);
 
     	initializeCamera();
