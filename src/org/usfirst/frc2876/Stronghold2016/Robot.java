@@ -47,7 +47,8 @@ public class Robot extends IterativeRobot {
     
     public static AHRS navX;
     
-    public static final boolean IS_PRACTICE_BOT = true;
+    
+    public static final boolean IS_PRACTICE_BOT = false;
     
     SendableChooser autoChooser;
 
@@ -136,6 +137,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
+    	arm.updateSmartDashboard();
+    	driveTrain.updateSmartDashboard();
+    	intake.updateSmartDashboard();
         LiveWindow.run();
     }
     
