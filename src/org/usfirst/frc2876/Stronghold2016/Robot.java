@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	driveTrain.setBrakeMode(true);
-        // schedule the autonomous command (example)
+        // schedule the autonomous command (example)S
     	autonomousCommand = (Command) autoChooser.getSelected();
         if (autonomousCommand != null) autonomousCommand.start();
     }
@@ -107,6 +107,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
     	arm.updateSmartDashboard();
     	driveTrain.updateSmartDashboard();
+    	
         Scheduler.getInstance().run();
     }
 
