@@ -53,7 +53,11 @@ public class Arm extends Subsystem {
     }
     
     public boolean isArmAtTop() {
-    	return cANTalon.getFaultForSoftLim() == 1;
+    	return cANTalon.getForwardSoftLimit() == 1;
+    }
+    
+    public boolean isArmAtBottom() {
+    	return cANTalon.getReverseSoftLimit() == 1;
     }
     
     public void updateSmartDashboard(){

@@ -46,7 +46,7 @@ public class AutoCGScore extends CommandGroup {
     	
     	addSequential(new ArmToTop());
     	addParallel(new IntakeExpel());
-    	addParallel(new AutoDriveDistance(50, .7)); //ramp is 42 inches, 50 for an 8 inch buffer
+    	addParallel(new AutoDriveDistance(42, .7)); //ramp is 42 inches, 50 for an 8 inch buffer
  
     } 
 }
