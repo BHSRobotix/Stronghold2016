@@ -62,6 +62,7 @@ public class Robot extends IterativeRobot {
 
 //    private int counterForAutoCommands = 0;
 
+    public static final boolean IS_PRACTICE_BOT = true;
     
     SendableChooser autoChooser;
 
@@ -99,6 +100,21 @@ public class Robot extends IterativeRobot {
         
         setupAuto();
 
+        // See
+        // https://wpilib.screenstepslive.com/s/4485/m/26401/l/255422-displaying-the-status-of-commands-and-subsystems
+        //
+        // display scheduler status.  You can see what commands are
+        // running on the robot.  If there are multiple commands
+        // running you will see multiple cmds on dashboard.  The
+        // commands should have a 'cancel' button next to their name.
+        //
+        SmartDashboard.putData(Scheduler.getInstance());
+
+        // display the command running on each subsystem
+        //
+        SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(arm);
+        SmartDashboard.putData(intake);
     }
 
     /**
