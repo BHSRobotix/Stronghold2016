@@ -132,15 +132,19 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	driveTrain.setBrakeMode(true);
     	// NEW STUFF - TEST LATER
-        // schedule the autonomous command (example)S
-//    	autoCommands.add((Command) defenseChooser.getSelected());
-//    	autoCommands.add(new AutoDriveTurn((double) firstTurnChooser.getSelected()));
-//    	autoCommands.add(new AutoDriveDistance((double) distanceChooser.getSelected(), .8));
-//    	autoCommands.add(new AutoDriveTurn((double) firstTurnChooser.getSelected()));
-//    	autoCommands.add((Command) secondDefenseChooser.getSelected());
+   	autoCommands.add((Command) defenseChooser.getSelected());
+   	autoCommands.add(new AutoDriveTurn((double) firstTurnChooser.getSelected()));
+   	autoCommands.add(new AutoDriveDistance((double) distanceChooser.getSelected(), .8));
+   	autoCommands.add(new AutoDriveTurn((double) firstTurnChooser.getSelected()));
+   	autoCommands.add((Command) secondDefenseChooser.getSelected());
+        // MACIEJ STUFF
+        autonomousCommand = new AutoCGDynamic(autoCommands);
+        if (autonomousCommand != null) autonomousCommand.start();
+        // END MACIEJ STUFF
     	
-    	autonomousCommand = (Command) autoChooser.getSelected();
-    	if (autonomousCommand != null) autonomousCommand.start();
+    	// autonomousCommand = (Command) autoChooser.getSelected();
+    	// if (autonomousCommand != null) autonomousCommand.start();
+
     }
     
     /**
