@@ -75,7 +75,7 @@ public class RobotMap {
         armCANTalon = new CANTalon(9);
         LiveWindow.addActuator("Arm", "CANTalon", armCANTalon);
         
-        armEncoder = new Encoder(4, 3, false, EncodingType.k4X);
+        armEncoder = new Encoder(2, 3, false, EncodingType.k4X);
         LiveWindow.addSensor("Arm", "Encoder", armEncoder);
         armEncoder.setDistancePerPulse(1.0);
         armEncoder.setPIDSourceType(PIDSourceType.kRate);
@@ -88,7 +88,7 @@ public class RobotMap {
         intakeLeftTalon = new CANTalon(8);
         LiveWindow.addActuator("Intake", "LeftTalon", intakeLeftTalon);
         
-        intakeLimitSwitch = new DigitalInput(5);
+        intakeLimitSwitch = new DigitalInput(4);
         LiveWindow.addSensor("Intake", "LimitSwitch", intakeLimitSwitch);
         
 

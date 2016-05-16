@@ -75,7 +75,7 @@ public class OI {
         backButton = new JoystickButton(controller, 7);
         backButton.whenPressed(new DriveInTankMode());
         yButton = new JoystickButton(controller, 4);
-        yButton.whenPressed(new AutoCGScore());
+        yButton.whenPressed(new IntakeExpelFast());
         xButton = new JoystickButton(controller, 3);
         xButton.whenPressed(new IntakeBall());
         bButton = new JoystickButton(controller, 2);

@@ -60,12 +60,14 @@ public class DriveTrain extends Subsystem {
 	public CameraServer server;
 
     public PIDController turnController;
-    public double kP = .3;
+    public double kP = .3;	
     public double kI = 0;
     public double kD = 0;
     public double kF = 0;
     public double pidTolerance = 2.0;
 
+    
+    
     
     public RobotDrive myRobot;
     
@@ -179,8 +181,8 @@ public class DriveTrain extends Subsystem {
 	public void updateSmartDashboard(){
 //		boolean sensorPluggedIn = (frontRightTalon.isSensorPresent(FeedbackDevice.QuadEncoder) == FeedbackDeviceStatus.FeedbackStatusPresent);
 //		SmartDashboard.putBoolean("fr encoder isSensorPresent ", sensorPluggedIn);
-//		SmartDashboard.putData("Left Encoder", getLeftEncoder());
-//    	SmartDashboard.putData("Right Encoder", getRightEncoder());
+		SmartDashboard.putData("Left Encoder", getLeftEncoder());
+    	SmartDashboard.putData("Right Encoder", getRightEncoder());
 //    	SmartDashboard.putNumber("Right Encoder d", leftEncoder.getDistance());
 //    	SmartDashboard.putNumber("Left Encoder d", rightEncoder.getDistance());
 //    	SmartDashboard.putBoolean("is navX connected", Robot.navX.isConnected());

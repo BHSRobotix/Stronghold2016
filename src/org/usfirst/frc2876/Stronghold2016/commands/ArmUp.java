@@ -38,7 +38,7 @@ public class ArmUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.arm.moveArmUp(.5);
+    	Robot.arm.moveArmUp();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -52,7 +52,7 @@ public class ArmUp extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.arm.moveArmUp(0);
+    	Robot.arm.setArmToZero();
     }
 
     // Called when another command which requires one or more of the same
