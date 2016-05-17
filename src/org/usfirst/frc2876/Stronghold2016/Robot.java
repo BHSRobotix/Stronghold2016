@@ -172,11 +172,12 @@ public class Robot extends IterativeRobot {
     public void setupAuto(){
     	autoChooser = new SendableChooser();
     	
-    	autoChooser.addDefault("Cross Low Bar", new AutoCGCrossLowBar());
+    	autoChooser.addDefault("Cross Low Bar", new AutoDriveDistance(180, -.7)); //15 feet, 70% speed backwards
     	autoChooser.addObject("Cross Rough Terrain", new AutoCGCrossRoughTerrain());
     	autoChooser.addObject("Cross Moat", new AutoCGCrossMoat());
     	autoChooser.addObject("Cross Ramparts", new AutoCGCrossRamparts());
     	autoChooser.addObject("Cross Rock Wall", new AutoCGCrossRockWall());
+    	autoChooser.addObject("Cross Sallyport Without Door (middle)", new AutoDriveDistance(180, -.7));//15 feet, 70% speed back
     	autoChooser.addObject("Do Nothing", new AutoDoNothing());
     	
     	SmartDashboard.putData("Auto Choice", autoChooser);
